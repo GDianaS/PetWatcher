@@ -1,0 +1,7 @@
+@import url(./config.css); 
+/* Configurações Gerais*/
+@import url(./global.css);
+/* Configurações Específicas*/
+@import url(./custom.css);
+/* Configurações de Responsividade*/
+@import url(./responsive.css);
