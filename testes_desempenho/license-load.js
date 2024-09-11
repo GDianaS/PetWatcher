@@ -18,10 +18,10 @@ export const options = {
 }
 
 export default function (){
-    const url = 'http://127.0.0.1:8000/login'
+    const url = 'http://127.0.0.1:8000/license/'
 
     const payload = JSON.stringify(
-        {codigo_microchip: '06091999'}
+        {CNPJ: '83.585.146/0001-73'}
     )
 
 
@@ -31,7 +31,7 @@ export default function (){
         }
     }
     
-    const res = http.post(url, payload,headers)
+    const res = http.get(url, payload,headers)
 
     //console.log(res.body)
     

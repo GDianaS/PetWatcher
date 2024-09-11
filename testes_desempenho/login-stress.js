@@ -6,14 +6,20 @@ export const options = {
     // pico
     // estabilização
     stages:[
-        {duration: '10s', target:1},
-        {duration: '30s', target:1},
-        {duration: '10s', target:0}
+        {duration: '1m', target:50}, // bellow normal load
+        {duration: '2m', target:50}, 
+        {duration: '1m', target:100}, // normal load
+        {duration: '2m', target:100},
+        {duration: '1m', target:300},// around breaking 
+        {duration: '2m', target:300},
+        {duration: '1m', target:400}, // beyond breaking
+        {duration: '2m', target:400},
+        {duration: '1m', target:0}, //recovery
 
     ],
     thresholds: {
         http_req_duration:['p(95)<2000'], // 95% das requisições devem responder em até 2s
-        http_req_failed:['rate<0.05'] // 5% das requisições podem ocorrer erro
+        http_req_failed:['rate<0.01'] // 1% das requisições podem ocorrer erro
     }
 }
 
@@ -21,7 +27,7 @@ export default function (){
     const url = 'http://127.0.0.1:8000/login'
 
     const payload = JSON.stringify(
-        {codigo_microchip: '06091999'}
+        {email: 'funcionarioCredenciada@gmail.com', password:'12345'}
     )
 
 

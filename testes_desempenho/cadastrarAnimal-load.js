@@ -12,16 +12,26 @@ export const options = {
 
     ],
     thresholds: {
-        http_req_duration:['p(95)<2000'], // 95% das requisições devem responder em até 2s
+        http_req_duration:['p(90)<5000'], // 90% das requisições devem responder em até 5s
         http_req_failed:['rate<0.05'] // 5% das requisições podem ocorrer erro
     }
 }
 
 export default function (){
-    const url = 'http://127.0.0.1:8000/login'
+    const url = 'http://127.0.0.1:8000/animal/create'
 
     const payload = JSON.stringify(
-        {codigo_microchip: '06091999'}
+        {   tipo_aquisicao: 'Adoção', 
+            cpf_ou_cnpj: '41555632076',
+            nome: 'Nome do animal',
+            codigo_microchip: 'BR3679',
+            especie: 'gato',
+            data_nascimento: '2015-11-11', // Formato de data correto (YYYY-MM-DD)
+            porte: 'medio',
+            sexo: 'feminino',                
+            hasPedigree: 0,                  // Alinhamento com o campo da view
+            telefone_credenciada: '1234567890' // Adicionando campo extra conforme visto na view
+    }
     )
 
 
@@ -31,7 +41,7 @@ export default function (){
         }
     }
     
-    const res = http.post(url, payload,headers)
+    const res = http.get(url, payload,headers)
 
     //console.log(res.body)
     

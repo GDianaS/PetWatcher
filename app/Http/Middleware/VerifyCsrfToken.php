@@ -21,5 +21,8 @@ class VerifyCsrfToken extends Middleware
     protected $except = [
         // desativando rotas para testes de performance
         'login', 
+        'consulta_animal',
+        'animal/create',
+        'license/'
     ];
 }
