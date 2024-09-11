@@ -19,6 +19,7 @@ class VerifyCsrfToken extends Middleware
      * @var array
      */
     protected $except = [
-        //
+        // desativando rotas para testes de performance
+        'login', 
     ];
 }
